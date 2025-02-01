@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "3DPlatformer.sln"
+    "dotnet.defaultSolution": "paired-prototype-spring-25-tuesday-team-asm.sln"
 }
