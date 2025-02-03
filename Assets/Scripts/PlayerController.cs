@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
         // Lock the cursor to the game window
         Cursor.lockState = CursorLockMode.Locked;
+
+        // Freeze rotation on X and Z axes to prevent falling over
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     void Update()
