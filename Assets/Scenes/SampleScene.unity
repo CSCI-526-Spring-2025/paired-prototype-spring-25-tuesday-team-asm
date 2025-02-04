@@ -502,7 +502,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &664400908
 BoxCollider:
@@ -610,7 +610,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &973776850
 BoxCollider:
@@ -754,7 +754,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &1153136004
 BoxCollider:
@@ -1005,6 +1005,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 8
   mouseSensitivity: 1000
+  environment: {fileID: 1143051744}
 --- !u!54 &1591711121
 Rigidbody:
   m_ObjectHideFlags: 0
