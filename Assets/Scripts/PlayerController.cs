@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 100f;
     public GameObject environment;  // Reference to the Environment object
     public float animationSpeed = 2f;  // Speed for position and rotation animations
+    public Transform respawnPoint;
 
     private float xRotation = 0f;
     private Transform playerCamera;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0;  // Tracks the number of jumps
     private Vector3 targetPosition;  // The target position for the environment object
     private Quaternion targetRotation;  // The target rotation for the environment object
-
+    private float prevAnimSpeed = 2;
     void Start()
     {
         playerCamera = GetComponentInChildren<Camera>().transform;
@@ -145,6 +146,18 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0;
+            animationSpeed = prevAnimSpeed;
         }
+    }
+
+    public void Respawn()
+    {
+        targetRotation = Quaternion.Euler(0, 0, 0);
+        prevAnimSpeed = animationSpeed;
+        animationSpeed = 20;
+        UpdateEnvironmentPosition();
+        transform.position = respawnPoint.position;
+        
+        //
     }
 }
