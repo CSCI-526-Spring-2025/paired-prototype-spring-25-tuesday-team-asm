@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPosition;  // The target position for the environment object
     private Quaternion targetRotation;  // The target rotation for the environment object
     private float prevAnimSpeed = 2;
+
     void Start()
     {
         playerCamera = GetComponentInChildren<Camera>().transform;
@@ -107,6 +108,15 @@ public class PlayerController : MonoBehaviour
     {
         if (environment != null)
         {
+            // Determine whether the player is facing forward or backward on the z-axis
+            float forwardDirection = Vector3.Dot(transform.forward, Vector3.forward);
+
+            // If facing backward (negative z-axis), invert the rotation direction
+            if (forwardDirection < 0)
+            {
+                angle = -angle;
+            }
+
             // Update target rotation by adding the angle
             targetRotation = Quaternion.Euler(environment.transform.eulerAngles.x, environment.transform.eulerAngles.y, environment.transform.eulerAngles.z + angle);
             UpdateEnvironmentPosition();
@@ -157,7 +167,7 @@ public class PlayerController : MonoBehaviour
         animationSpeed = 20;
         UpdateEnvironmentPosition();
         transform.position = respawnPoint.position;
-        
+
         //
     }
 }
