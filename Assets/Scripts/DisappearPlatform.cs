@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DisappearPlatform : MonoBehaviour
 {
-    public float fadeSpeed = 0.1f;
+    public float fadeSpeed = 0.6f;
     public float fadeInterval = 0.1f;
 
     private Material thisMat;
