@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private Quaternion targetRotation;  // The target rotation for the environment object
     private float prevAnimSpeed = 2;
 
+    public delegate void RespawnEvent();
+    public static event RespawnEvent OnRespawn; // Event for respawn
+
     void Start()
     {
         playerCamera = GetComponentInChildren<Camera>().transform;
@@ -168,6 +171,6 @@ public class PlayerController : MonoBehaviour
         UpdateEnvironmentPosition();
         transform.position = respawnPoint.position;
 
-        //
+        OnRespawn?.Invoke();
     }
 }
