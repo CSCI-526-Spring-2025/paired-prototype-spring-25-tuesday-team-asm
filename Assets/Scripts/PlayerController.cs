@@ -171,6 +171,11 @@ public class PlayerController : MonoBehaviour
         UpdateEnvironmentPosition();
         transform.position = respawnPoint.position;
 
+        GameObject myObject = GameObject.Find("BottomFloor (2)");
+        Platform platform = myObject.GetComponent<Platform>();
+        platform.Reset();
+
+
         OnRespawn?.Invoke();
     }
 }

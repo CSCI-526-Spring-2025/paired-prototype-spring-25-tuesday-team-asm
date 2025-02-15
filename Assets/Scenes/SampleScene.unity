@@ -3056,7 +3056,7 @@ GameObject:
   - component: {fileID: 1206548552}
   - component: {fileID: 1206548551}
   - component: {fileID: 1206548550}
-  - component: {fileID: 1206548553}
+  - component: {fileID: 1206548554}
   m_Layer: 0
   m_Name: BottomFloor (2)
   m_TagString: Ground
@@ -3153,7 +3153,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206548548}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1206548553
+--- !u!114 &1206548554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3162,11 +3162,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206548548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 005b29d45e56c3248a7127a791919034, type: 3}
+  m_Script: {fileID: 11500000, guid: ac4a0d49a6427484f996321a9fa45133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 0.6
-  fadeInterval: 0.1
+  moveSpeed: 10
+  player: {fileID: 0}
 --- !u!1 &1283405568
 GameObject:
   m_ObjectHideFlags: 0
