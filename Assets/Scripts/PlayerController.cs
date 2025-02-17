@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0;  // Tracks the number of jumps
     private Vector3 targetPosition;  // The target position for the environment object
     private Quaternion targetRotation;  // The target rotation for the environment object
-    private float prevAnimSpeed = 2;
+    private float originalAnimSpeed;
 
+    
     public delegate void RespawnEvent();
     public static event RespawnEvent OnRespawn; // Event for respawn
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         playerCamera = GetComponentInChildren<Camera>().transform;
         rb = GetComponent<Rigidbody>();
+        originalAnimSpeed = animationSpeed;
 
         // Lock the cursor to the game window
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMouseLook();
         HandleJump();
-
+           
         // Smoothly move the environment object to the target position and rotation
         if (environment != null)
         {
@@ -159,23 +161,29 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0;
-            animationSpeed = prevAnimSpeed;
+            animationSpeed = originalAnimSpeed;
         }
     }
 
     public void Respawn()
     {
+        rb.isKinematic = false;
         targetRotation = Quaternion.Euler(0, 0, 0);
-        prevAnimSpeed = animationSpeed;
         animationSpeed = 20;
         UpdateEnvironmentPosition();
         transform.position = respawnPoint.position;
 
-        GameObject myObject = GameObject.Find("BottomFloor (2)");
-        Platform platform = myObject.GetComponent<Platform>();
-        platform.Reset();
+        //GameObject myObject = GameObject.Find("BottomFloor (2)");
+        //Platform platform = myObject.GetComponent<Platform>();
+        //platform.Reset();
 
 
         OnRespawn?.Invoke();
+    }
+
+    public void freezePlayer()
+    {
+        rb.linearVelocity = Vector3.zero; // Stop movement
+        rb.isKinematic = true; // Disable physics movement
     }
 }
